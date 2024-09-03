@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP3 Player</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>MP3 Player</h1>
+    
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <!-- Input file dengan id dan label yang sesuai -->
+        <input type="file" id="mp3file" name="mp3file" accept=".mp3" required>
+        <label for="mp3file">Choose File</label> <!-- Menggunakan atribut for -->
+        <button type="submit">Upload</button>
+    </form>
+    
+    <h2>Playlist</h2>
+    <ul id="playlist">
+        <% files.forEach((file, index) => { %>
+            <li><a href="#" data-file="<%= file %>" data-index="<%= index %>"><%= file %></a></li>
+        <% }) %>
+    </ul>
+
+    <audio id="audioPlayer" controls>
+        <source id="audioSource" src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="/js/player.js"></script>
+</body>
+</html>
